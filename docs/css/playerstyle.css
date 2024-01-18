@@ -1,0 +1,180 @@
+.audio-player {
+    display: flex;
+    align-items: center;
+}
+
+#audioUpload {
+    margin-right: 10px;
+}
+
+#playPauseBtn {
+    background-color: Lightgreen; /* 设置按钮背景为绿色 */
+    color: white; /* 设置图标颜色为白色 */
+    border: none; /* 移除边框 */
+    padding: 5px; /* 减小内边距 */
+    border-radius: 50%; /* 使按钮成为圆形 */
+    width: 30px; /* 减小宽度 */
+    height: 30px; /* 减小高度 */
+    margin: 0 10px;
+    display: inline-flex; /* 使用flex布局使图标居中 */
+    align-items: center;
+    justify-content: center;
+}
+
+#playPauseBtn i {
+    color: white; /* 确保FontAwesome图标也是白色 */
+    font-size: 16px; /* 调整图标大小 */
+}
+
+/* 取消倍速按钮的白色背景 */
+select#playbackRate {
+    background-color: transparent; /* 设置背景颜色透明 */
+    border: none; /* 移除边框 */
+    /* 可以添加其他样式来调整外观，例如字体颜色、内边距等 */
+}
+
+#seekSlider {
+    -webkit-appearance: none; /* 移除默认样式 */
+    width: 300px; /* 进度条宽度 */
+    height: 10px; /* 进度条高度，现在设置为10px */
+    border-radius: 5px; /* 圆角 */
+    background: lightgrey; /* 默认背景 */
+    outline: none; /* 移除外边线 */
+    margin: 0 10px;
+}
+
+#seekSlider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px; /* 滑块直径，进度条宽度的1.5倍 */
+    height: 15px; /* 同上 */
+    border-radius: 50%; /* 圆形 */
+    background: green; /* 内圆背景色 */
+    cursor: pointer;
+    box-shadow: 0 0 0 5px white; /* 外圆白色边框，根据需要调整 */
+    margin-top: -2.5px; /* 调整滑块垂直居中 */
+}
+
+#seekSlider::-moz-range-thumb {
+    /* Firefox的样式 */
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: green;
+    cursor: pointer;
+    box-shadow: 0 0 0 5px white; /* 外圆白色边框 */
+}
+
+#seekSlider::-webkit-slider-runnable-track {
+    background-color: Lightgreen; /* Chrome, Safari等浏览器的进度条颜色 */
+}
+
+#seekSlider::-moz-range-progress {
+    background-color: Lightgreen; /* 设置Firefox中进度条的颜色 */
+}
+
+#duration {
+    margin-left: 10px;
+    margin-right: 5px;
+    color: lightgreen; /* 设置时间颜色为绿色 */
+}
+
+.divider {
+    margin: 0 8px; /* 调整空白大小 */
+    color: #666; /* 调整颜色 */
+}
+
+#playbackRate {
+    color: lightgreen; /* 设置播放速率颜色为绿色 */
+    margin-left: 5px; /* 减小左边距以拉近与时间显示的距离 */
+}
+
+    .audio-player {
+        display: flex;
+        align-items: center;
+        /* ... 其他样式 ... */
+    }
+
+    .controls-background {
+        background-color: #a0a0a0; /* 更深的灰色 */
+        border-radius: 30px; /* 高度的一半，用于创建半圆效果 */
+        padding: 10px; /* 内边距 */
+        display: flex; /* 使容器内元素水平排列 */
+        align-items: center; /* 垂直居中容器内的元素 */
+        margin: 10px 0; /* 外边距 */
+        height: 40px; /* 控制背景高度，确保与 border-radius 相匹配 */
+    }
+
+@charset "utf-8";
+.user{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url("../image/tx.png");
+    background-size: cover;
+}
+
+.foot {
+    margin-top: 20px; /* 页脚上方增加间隔 */
+    font-size: smaller;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+svg {
+    width: 0;
+    height: 0;
+}
+
+.loader {
+    --i: 1; /* initialize custom property */
+    position: relative; /* you can also use 'absolute' if that better suits your design */
+    width: 200px;
+    height: 200px;
+    filter: url(#gooey);
+    /* Make sure the loader is below the nav, can be adjusted if nav height changes */
+    margin-top: 70px; /* distance from the bottom of the nav bar */
+}
+
+.loader span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    animation: animate 4s ease-in-out infinite;
+    animation-delay: calc(0.2s * var(--i));
+}
+
+.loader span:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    box-shadow: 0 0 30px #03A9F4;
+    background: linear-gradient(#fce4ec, #03a9f4);
+    transform: translate(-50%, -50%);
+}
+
+@keyframes animate {
+    0% {
+        transform: rotate(0deg) translate(-50%, -50%);
+    }
+    50%, 100% {
+        transform: rotate(360deg) translate(-50%, -50%);
+    }
+}

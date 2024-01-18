@@ -1,0 +1,404 @@
+@charset "utf-8";
+
+/* 主体CSS */
+body {
+    margin: 0;
+    padding-top: 0; /* Top padding of 70px */
+    padding-bottom: 0; /* No bottom padding */
+    background: rgb(230,230,242);
+    box-sizing: border-box; /* Includes padding in the element's total width */
+}
+
+.My{
+    padding-left: 20px; /* Left padding of 20px */
+    padding-right: 20px; /* Right padding of 20px */
+}
+
+.image_background {
+            overflow: hidden; /* 确保放大后超出部分的图片不会显示出来 */
+        }
+        .image_background img {
+            width: 100%;
+            height: 550px;
+            transition: transform 0.5s ease; /* 平滑的变换效果 */
+        }
+        .image_background:hover img {
+            transform: scale(1.05); /* 鼠标悬停时放大1.1倍 */
+        }
+
+/* 给背景增加两个渐变圆 */
+body::before{
+    content: "";
+    /* 绝对定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 渐变背景 */
+    background: linear-gradient(green,#6dd5ed);
+    /* 将元素剪切微一个圆形【30%表示圆的直径】【right 70%表示圆心位置】 */
+    clip-path: circle(30% at right 70%);
+    z-index: -2; /* 确保背景在内容之后 */
+}
+body::after{
+    content: "";
+    /* 绝对定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 渐变背景 */
+    background: linear-gradient(red,#ffdde1);
+    /* 将元素剪切微一个圆形【30%表示圆的直径】【right 70%表示圆心位置】 */
+    clip-path: circle(30% at 10% 70%);
+    z-index: -2; /* 确保背景在内容之后 */
+}
+
+/* 分区CSS */
+.qiandao {
+    background-color: white;
+    padding: 10px 20px;
+    margin: 25px 20px;
+    border: none;
+    border-radius: 10px;
+    width: 35%;
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直堆叠子元素 */
+    align-items: flex-start; /* 子元素靠左对齐 */
+}
+
+.second-row {
+    display: flex;
+    justify-content: flex-end; /* 将按钮推向右边 */
+    width: 100%; /* 确保这一行占满容器的宽度 */
+}
+
+.qiandao {
+    background-color: white;
+    padding: 10px 20px;
+    margin: 25px 20px;
+    border: none;
+    border-radius: 10px;
+    width: 35%;
+    display: flex; /* 使用 flex 布局 */
+    flex-direction: column; /* 垂直堆叠子元素 */
+    align-items: flex-start; /* 子元素靠左对齐 */
+}
+
+.second-row {
+    display: flex;
+    justify-content: flex-end; /* 将按钮推向右边 */
+    width: 100%; /* 确保这一行占满容器的宽度 */
+}
+
+.sign-in-btn {
+    background-color: white; /* 按钮背景颜色为白色 */
+    color: red; /* 按钮文字颜色为红色 */
+    border: 2px solid red; /* 设置边框为红色 */
+    border-radius: 35px; /* 边角圆形，设置为20px */
+    padding: 10px 25px; /* 内边距 */
+    cursor: pointer; /* 鼠标悬浮时指针样式 */
+    font-size: 22px; /* 文字大小 */
+    display: flex; /* Flex 布局，用于图标和文字的水平排列 */
+    align-items: center; /* 垂直居中对齐 */
+    text-decoration: none; /* 移除文本下划线，如果是<a>标签的话 */
+    outline: none; /* 移除点击时的轮廓线 */
+    transition: background-color 0.3s, color 0.3s; /* 添加过渡效果 */
+    line-height: 1.5; /* 用于垂直对齐文本和图标 */
+
+    /* Move the button upwards by setting a negative top margin */
+    margin-top: -60px; /* 调整这个值以根据需要向上移动按钮 */
+}
+
+.sign-in-btn:hover {
+    background-color: red; /* 鼠标悬浮时背景颜色变为红色 */
+    color: white; /* 鼠标悬浮时文字颜色变为白色 */
+}
+
+/* 经验条的整体样式 */
+.experience-bar {
+    display: flex;
+    align-items: center;
+}
+
+.nav-container {
+    display: flex;
+    align-items: center; /* 使得子元素垂直居中 */
+    justify-content: space-between; /* 在子元素之间添加空间 */
+}
+
+.nav-container > * {
+    margin: 0 25px; /* 所有直接子元素两侧都会有10px的间隔 */
+}
+
+/* 用户等级图标样式 */
+.level-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #FFA500; /* 橙色背景 */
+    color: white; /* 白色文字 */
+    border-radius: 50%; /* 圆形图标 */
+    margin-right: 10px; /* 与进度条之间的间隔 */
+    font-size: 14px;
+}
+
+/* 经验条外层容器样式 */
+.experience-progress {
+    flex-grow: 1; /* 让进度条占据剩余空间 */
+    background-color: #ddd; /* 浅色背景表示总经验 */
+    height: 10px;
+    border-radius: 5px;
+    position: relative;
+}
+
+/* 当前经验部分的样式 */
+.current-experience {
+    background-color: #FF8C00; /* 深橙色背景表示已有经验 */
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: width 0.3s ease; /* 平滑过渡效果 */
+}
+
+/* 经验值文本样式 */
+.experience-value {
+    margin-left: 10px;
+}
+
+.zhiding {
+    background-color: white;
+    padding: 20px; /* 为整个容器添加更多的内边距 */
+    margin: 25px 20px;
+    border: none;
+    border-radius: 10px;
+    width: 35%;
+}
+
+.zhiding-header {
+    display: flex; /* 使用 flex 布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center; /* 垂直居中 */
+    margin-bottom: 10px; /* 与下面的 <p> 标签之间的间距 */
+}
+
+.icon-zhiding{
+    color: orange;
+}
+
+.fenqu {
+    background-color: white;
+    padding: 2px 20px;
+    margin: 25px 20px;
+    border: none;
+    border-radius: 10px;
+    width: 35%;
+    /* 不需要 display: flex; 因为我们想让子元素堆叠 */
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* 没有改变，仍然让标题和按钮在一行内 */
+}
+
+.images-row {
+    display: flex;
+    justify-content: flex-start; /* 让图片紧挨着，但是有间隔 */
+    gap: 10px; /* 你可以根据需要调整这个值 */
+}
+
+.image-container {
+    width: 100%; /* 容器宽度为父级元素的100% */
+    height: 150px; /* 容器高度设置为150px */
+    overflow: hidden; /* 隐藏溢出的图片部分 */
+    position: relative; /* 对子元素进行定位 */
+    display: block;
+    margin-bottom: 10px; /* 在容器下方添加10px的间隔，根据需要调整这个值 */
+    border-radius: 10px; /* 圆形图标 */
+}
+.image-container img {
+    width: auto; /* 使用图片的原始宽度 */
+    height: 150px; /* 图片高度与容器高度一致 */
+    object-fit: contain; /* 保持图片的宽高比，确保图片完整显示 */
+    object-position: center; /* 图片的中心与容器的中心对齐 */
+    position: absolute; /* 绝对定位 */
+    left: 50%; /* 水平居中 */
+    transform: translateX(-50%); /* 向左偏移图片宽度的50%来确保居中 */
+}
+
+.image-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* text1的宽度与容器相同 */
+    text-align: center;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 0;
+}
+
+.view-all-btn {
+    padding: 5px 10px;
+    background-color: #ccc;
+    border: none;
+    cursor: pointer;
+}
+
+
+.dongtai {
+    background-color: white; /* 设置背景颜色为白色 */
+    padding: 0.5px 20px; /* 上下内边距0.5px，左右内边距20px */
+    margin: 25px 20px; /* 上下外边距25px，左右外边距20px */
+    border: none; /* 隐藏边框 */
+    border-radius: 10px; /* 设置边框圆角 */
+    width: 35%;
+    display: flex; /* 使用 flex 布局 */
+    justify-content: space-between; /* 两端对齐 */
+    align-items: center; /* 垂直居中 */
+}
+
+.view-all-btn {
+    border: none;
+    background: none;
+    color: #cccccc;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.view-all-btn:hover {
+    color: #333333;
+}
+
+.view-all-btn.icon-xiala::before {
+    content: '▼'; /* Unicode 下拉列表符号 */
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll; /* 更明确地指定垂直滚动 */
+    overflow-x: hidden;
+    min-height: 100vh; /* 使用min-height而不是height */
+
+}
+
+.right-side-background {
+    position: absolute; /* 固定定位，使其始终在视口内 */
+    top: 580px; /* 从顶部开始 */
+    right: 20px; /* 从右侧开始 */
+    width: 60%; /* 占据屏幕宽度的55% */
+    height: 100%; /* 高度占满整个视口的高度 */
+    background-color: white; /* 设置背景颜色为白色 */
+    border: none; /* 隐藏边框 */
+    border-radius: 10px; /* 设置边框圆角 */
+    z-index: -1; /* 设置z-index保证这个背景在内容下方 */
+}
+
+.button-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#back-button {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 25px;
+  margin: 0;
+}
+
+#search-button,
+#info-button {
+  margin: 0;
+    padding: 25px;
+}
+
+.icon-button {
+    background: none; /* 无背景 */
+    border: none; /* 无边框 */
+    cursor: pointer; /* 鼠标悬浮时显示手型指针 */
+    margin: 0 10px; /* 两个按钮之间的间距 */
+    padding: 10px; /* 按钮内边距 */
+    font-size: 1.5em; /* 图标大小，可根据需要调整 */
+}
+
+.right-side-background .horizontal-separator {
+    border-bottom: 1px solid #ccc; /* Replace #ccc with the color you want for the line */
+    width: 100%; /* This will make it span the full width of the right-side-background */
+    margin-bottom: 20px; /* Adjust the space between the line and the next content as needed */
+}
+
+/* 固定位置的编辑按钮样式 */
+.edit-icon-button {
+    position: fixed; /* 固定定位 */
+    bottom: 40px; /* 距离底部40px */
+    right: 40px; /* 距离右侧40px */
+    background-color: red; /* 背景色为红色 */
+    color: white; /* 图标颜色为白色 */
+    border: none; /* 无边框 */
+    border-radius: 50%; /* 圆形 */
+    width: 70px; /* 宽度设置为70px */
+    height: 70px; /* 高度设置为70px */
+    font-size: 30px; /* 图标大小调整为30px */
+    display: flex; /* 使用flex布局 */
+    align-items: center; /* 垂直居中 */
+    justify-content: center; /* 水平居中 */
+    z-index: 1000; /* 高于其他元素的z-index值 */
+    cursor: pointer; /* 鼠标悬停时显示指针 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* 可选：添加阴影效果 */
+    /* 其他样式保持不变 */
+}
+
+/* Font Awesome图标基本样式，如果需要的话 */
+.fas {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit; /* 使用父元素的字体大小 */
+    text-rendering: auto; /* 优化文本渲染 */
+    -webkit-font-smoothing: antialiased; /* 针对WebKit浏览器优化文字边缘 */
+}
+
+.user{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url("../image/tx.png");
+    background-size: cover;
+}
+
+@keyframes load{
+    0%{
+        background-position-y: 50px;
+        opacity: 0;
+    }
+    100%{
+        background-position-y: 0px;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+/* 分区之上CSS */
+
+
+
+
+
+
+
+

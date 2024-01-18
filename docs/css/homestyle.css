@@ -1,0 +1,247 @@
+@charset "utf-8";
+
+@property --rotate{
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root{
+  --card-height:55vh;
+  --card-width: calc(var(--card-height) / 1.4);
+}
+
+
+body {
+    background-color: #161626; /* Pure black */
+}
+
+/* 给背景增加两个渐变圆 */
+body::before{
+    content: "";
+    /* 绝对定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 渐变背景 */
+    background: linear-gradient(#2193b0,#6dd5ed);
+    /* 将元素剪切微一个圆形【30%表示圆的直径】【right 70%表示圆心位置】 */
+    clip-path: circle(30% at right 70%);
+    z-index: -2; /* 确保背景在内容之后 */
+}
+body::after{
+    content: "";
+    /* 绝对定位 */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* 渐变背景 */
+    background: linear-gradient(#ee9ca7,#ffdde1);
+    /* 将元素剪切微一个圆形【30%表示圆的直径】【right 70%表示圆心位置】 */
+    clip-path: circle(20% at 10% 10%);
+    z-index: -2; /* 确保背景在内容之后 */
+}
+
+.main {
+    scroll-snap-type: y mandatory;
+    overflow-y: scroll; /* 更明确地指定垂直滚动 */
+    overflow-x: hidden;
+    min-height: 100vh; /* 使用min-height而不是height */
+}
+
+.sec {
+    min-height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    overflow: hidden; /* 隐藏溢出的内容 */
+    box-sizing: border-box; /* 确保边框和内边距不会增加宽度 */
+    margin: 0; /* 移除外边距 */
+    padding: 0; /* 移除内边距 */
+    border: none; /* 移除边框 */
+}
+
+
+.foot {
+    margin-top: 20px; /* 页脚上方增加间隔 */
+    font-size: smaller;
+}
+
+.pt {
+    flex-direction: column;
+    width: var(--card-width);
+    height: var(--card-height);
+    float: left;
+    margin: 20px 10px 0px 5vw;
+    background: #191c29; /* 从.card覆盖背景颜色 */
+    border-radius: 6px; /* 如果想要.card的6px圆角，这里需要更改 */
+    scroll-snap-align: start;
+    padding: 3px; /* 从.card添加的内边距 */
+    position: relative; /* 从.card添加的定位属性 */
+    justify-content: center; /* 从.card添加的Flexbox对齐属性 */
+    align-items: center; /* 从.card添加的Flexbox对齐属性 */
+    text-align: center; /* 从.card添加的文本对齐属性 */
+    display: flex;
+    font-size: 1.5em; /* 从.card添加的字体大小 */
+    color: rgb(88 199 250 / 0%); /* 从.card添加的字体颜色，但这里的透明度是0%，这可能是一个错误 */
+    cursor: pointer; /* 从.card添加的鼠标指针样式 */
+    font-family: Arial, Helvetica, sans-serif; /* 从.card添加的字体家族 */
+}
+
+.pt:hover {
+  color: rgb(88 199 250); /* 颜色改为不透明 */
+  transition: color 1s; /* 颜色过渡时间为1秒 */
+}
+
+.pt:hover::before, .pt:hover::after {
+  animation: none; /* 移除任何可能的动画效果 */
+  opacity: 0; /* 设置不透明度为0，使元素变透明 */
+}
+
+.pt::before{
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  position: absolute;
+  z-index: -1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+.pt::after{
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(var(--rotate), #5ddcff, #3c67e3 43%, #4e00c2);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
+
+.imghid{
+    overflow: hidden;
+}
+
+.pt .txt{
+    height: 310px;
+    width: 200px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    
+}
+
+.pt .txt h1{
+    position: absolute;
+  top: -20px;
+  right: 30px;
+  font-size: 60px;
+  color: rgba(255, 255, 255, 0.05);
+}
+
+.pt .txt h2{
+    font-size: 28px;
+  color: #fff;
+}
+
+.pt .txt p{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    word-wrap: break-word;
+    font-size: 18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 新增部分的整体样式 */
+.welcome-section {
+    min-height: 100vh; /* 使得 .welcome-section 至少有100%视口高度 */
+    min-width: 100vh;
+    padding: 50px; /* 或根据您的设计需求调整 */
+    text-align: center; /* 如果您希望文字居中显示 */
+    margin-top: 20px; /* 上下间隔20px，左右居中 */
+    margin-bottom: 0px;
+}
+
+/* 新增部分的标题样式 */
+.welcome-section h2 {
+    font-size: 1.5em; /* 标题文字大小 */
+    color: white; /* 标题文字颜色 */
+    margin-bottom: 20px; /* 标题下方间隔 */
+    font-weight: normal; /* 标题字体粗细 */
+}
+
+.welcome-section h3 {
+    color: whitesmoke;
+}
+
+/* 新增部分的段落文本样式 */
+.welcome-section p {
+    font-size: 1em; /* 段落文字大小 */
+    color: #727272; /* 段落文字颜色 */
+    line-height: 1.6; /* 行高 */
+    margin-bottom: 0px; /* 段落之间的间隔 */
+}
+
+.user{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url("../image/tx.png");
+    background-size: cover;
+}
+
+
+@keyframes load{
+    0%{
+        background-position-y: 50px;
+        opacity: 0;
+    }
+    100%{
+        background-position-y: 0px;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+

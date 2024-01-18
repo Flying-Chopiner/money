@@ -1,0 +1,13 @@
+@charset "utf-8";
+.user{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-image: url("../image/tx.png");
+    background-size: cover;
+}
+
+.foot {
+    margin-top: 20px; /* 页脚上方增加间隔 */
+    font-size: smaller;
+}

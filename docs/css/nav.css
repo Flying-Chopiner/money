@@ -1,0 +1,106 @@
+@charset "utf-8";
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+nav {
+    position: fixed;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100vw;
+    height: 70px;
+    top: 0px;
+    background: black;
+    overflow: hidden;
+    font-size: 20px;
+    color: rgb(234, 247, 255);
+    opacity: 1;
+    z-index: 1000;
+}
+
+nav::before {
+    content: '';
+    margin-left: -20px; /* 调整这个值以根据您的需求向左移动第一个导航项 */
+    flex: 0 0 auto;
+}
+
+.homenav {
+    animation: load2 1s linear;
+    width: 100vw; /* 设置导航栏宽度为视口的100% */
+}
+
+nav:hover {
+    opacity: 0.95;
+}
+
+nav .navtitle {
+    padding-left: 50px;
+    width: 20%;
+    color: #fff; /* 设置字体颜色 */
+    text-shadow:
+        1px 1px 0px #e5e5e5,
+        2px 2px 0px #cacaca,
+        3px 3px 0px #b0b0b0,
+        4px 4px 0px #969696,
+        5px 5px 0px #7c7c7c,
+        6px 6px 0px #636363,
+        7px 7px 0px #4b4b4b,
+        8px 8px 0px #333333; /* 为文字添加多层阴影以产生3D效果 */
+    font-weight: bold; /* 加粗字体以增强效果 */
+}
+
+nav .navtitle strong {
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+nav a {
+    display: block;
+    justify-content: center;
+    text-decoration: none;
+    z-index: 1;
+    height: inherit;
+    line-height: 70px;
+    width: 120px;
+    text-align: center;
+    font-weight: bolder;
+    color: white;
+    transition: 0.5s;
+}
+
+.nav-link {
+    text-decoration: none; /* Removes underline from links */
+    font-size: 22px; /* Set the font size for the links */
+    margin: 0 10px; /* Add some horizontal spacing between links */
+    padding: 5px 10px; /* Add some padding for better readability */
+    transition: color 0.2s ease; /* Smooth color transition for hover effect */
+}
+
+/* Specific styles for glowing text shadows */
+.nav-link.white { text-shadow: 0 0 5px #FFF; }
+.nav-link.yellow { text-shadow: 0 0 5px #FFD700; }
+.nav-link.green { text-shadow: 0 0 5px #32CD32; }
+.nav-link.purple { text-shadow: 0 0 5px #800080; }
+.nav-link.blue { text-shadow: 0 0 5px #0000FF; }
+.nav-link.red { text-shadow: 0 0 5px #FF0000; }
+.nav-link.orange { text-shadow: 0 0 5px #FFA500; }
+
+/* Hover effect for links */
+.nav-link:hover {
+    opacity: 0.8; /* Makes the link slightly transparent on hover */
+    transform: scale(1.1); /* Scales up the link to highlight on hover */
+}
+
+@keyframes load2 {
+    0% {
+        top: -80px;
+        opacity: 0;
+    }
+    100% {
+        top: 0px;
+        opacity: 0.8;
+    }
+}

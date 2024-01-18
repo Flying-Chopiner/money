@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="../css/body.css">
+    <link rel="stylesheet" href="../css/Loading.css">
+    <link rel="stylesheet" href="../css/login.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google - Sign In </title>
+    <link rel="shortcut icon" href="/icons8-google-240.png" type="image/x-icon">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto,sans-serif';
+}
+body{
+    display: flex;
+    justify-content: flex-end; /* 使内容靠右对齐 */
+    align-items: center;
+    min-height: 100vh;
+}
+.login-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    width: 45%; /* 调整宽度为屏幕的45% */
+    height: calc(100%); /* 设置高度为视窗高度减去顶部的高度 */
+    padding: 10px 30px;
+    background-color: rgba(50, 59, 88, 0.75); /* 默认背景透明度为0.1 */
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(50, 59, 88, 0.75);
+    position: fixed;
+    right: 0; /* 从屏幕右侧开始 */
+    bottom: 0;
+    transform: none;
+}
+.login-header{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    margin: 20px 0 50px 0;
+}
+.login-header{
+    font-family: 'Poppins',sans-serif;
+    font-size: 50px;
+    font-weight: bolder;
+    -webkit-background-clip: text;
+background-image: linear-gradient(90deg,
+                                  rgba(0, 123, 255, 1),  /* Brighter blue */
+                                  rgba(255, 0, 255, 1),   /* Brighter magenta */
+                                  rgba(255, 0, 0, 1),     /* Brighter red */
+                                  rgba(255, 255, 0, 1),   /* Brighter yellow */
+                                  rgba(0, 255, 0, 1),     /* Brighter green */
+                                  rgba(0, 123, 255, 1));  /* Brighter blue */
+background-size: 800%;
+    animation: gradient 30s infinite linear;
+    color: transparent;
+    margin-bottom: -30px;
+}
+.login-header p{
+    color: #555;
+}
+.step .input-box {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+}
+.step .input-box label{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    color: #555;
+    transition: .15s ease-in-out;
+    font-size: 15px;
+}
+.step .input-box input{
+    width: 100%;
+    height: 50px;
+}
+.step .input-box .input-field{
+    font-size: 1em;
+    color: #333;
+    padding-left: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    outline: none;
+    width: 160%;
+    height: 50px;
+}
+label {
+  align-self: flex-start; /* 如果你希望标签靠左对齐 */
+  margin-left: -25%; /* 标签的左边距，与 input-field 的宽度相匹配 */
+  margin-bottom: 15px;
+}
+.step .input-box input[type="password"]{
+    margin-bottom: 10px;
+}
+.step .input-box .input-field:focus{
+    outline: 2px solid #8749F2;
+}
+.step .input-field:focus~ label,.input-field:valid~label{
+    top: -8px;
+    left: 12px;
+    font-size: 20px;
+    color: #7931F5;
+    background: #fff;
+    padding: 0 5px;
+
+}
+.step .input-field:valid ~label{
+    color: #555;
+}
+.step .forgot {
+  display: flex;
+  justify-content: flex-start; /* 保证内容靠左对齐 */
+  margin-bottom: 18px; /* 保持原有的底部外边距 */
+  font-size: 15px; /* 保持原有的字体大小 */
+  padding-left: 0; /* 与输入框左侧内边距相同 */
+}
+.forgot-link {
+    color: rgb(16,163,127);
+    text-decoration: none; /* 可选：移除下划线 */
+}
+.enroll {
+    color: rgb(16,163,127);
+    text-decoration: none; /* 可选：移除下划线 */
+}
+section{
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.step .input-box .input-submit{
+    font-family: 'Poppins', sans-serif;
+    font-size: 20px;
+    color: #fff;
+    background: rgb(16,163,127);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 160%;
+    margin-top: 0;
+    align-items: center;
+    display: block;
+}
+
+.step .input-submit:hover {
+    background-color: rgb(14,146,114); /* 鼠标悬停时的背景色 */
+}
+
+hr{
+    border: 1px solid #ddd;
+}
+.social-sign-in{
+    display: flex;
+    gap: 15px;
+}
+.no-account {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px; /* 调整边距大小来使行向下移动 */
+}
+
+.no-account section p {
+    color: white;
+}
+
+button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.sign-up p{
+    font-size: 14px;
+    color:#333;
+}
+.sign-up p>a{
+    text-decoration: none;
+}
+@media only screen and (max-width:510px) {
+    .login-box{
+        padding: 10px 30px;
+        margin:20px;
+    }
+}
+@media only screen and (max-width:415px) {
+    .login-box{
+        padding: 10px 25px;
+        margin:15px;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="login-box">
+        <div class="login-header">
+            <header>
+                Welcome back
+            </header>
+            <br>
+        </div>
+        <div class="step" data-step="1">
+            <div class="input-box">
+                <input type="text" class="input-field" id="phone" required>
+                    <label for="phone">
+                        账号
+                    </label>
+            </div>
+
+            <div class="input-box">
+                <input type="button" class="input-submit" value="继续" onclick="nextStep()">
+            </div>
+
+            <div class="no-account" style="display: flex; justify-content: center; align-items: center;">
+                <section>
+                    <p>没有账号 ？</p>
+                    <a href="index.html" class="enroll">暂不支持注册，请联系管理员</a>
+                </section>
+            </div>
+            </div>
+
+        <div class="step" data-step="2" style="display: none;">
+            <div class="input-box">
+                <input type="text" class="input-field" id="phone-step2" required>
+                    <label for="phone-step2">
+                        账号
+                    </label>
+            </div>
+
+            <div class="input-box">
+                <input type="password" class="input-field" id="password" required>
+                    <label for="password">
+                        密码
+                    </label>
+            </div>
+
+            <div class="forgot">
+                <section>
+                    <a href="index.html" class="enroll">忘记密码 ？ 请联系管理员</a>
+                </section>
+            </div>
+
+            <div class="input-box">
+                <input type="button" class="input-submit" value="登录" onclick="enroll()">
+            </div>
+
+            <div class="no-account" style="display: flex; justify-content: center; align-items: center;">
+                <section>
+                    <p>没有账号 ？</p>
+                    <a href="index.html" class="enroll">暂不支持注册，请联系管理员</a>
+                </section>
+            </div>
+            </div>
+    </div>
+
+        <div class="guidelines" id="guidelines">
+        <div class="logtitle2">Registration Guidelines</div>
+            <br>
+        <h2 style="color: #add8e6;">Utopia注册须知</h2>
+            <br>
+        <ol style="color: #b0b0b0;">
+            <li>确保信息有效以保证可联系性</li>
+            <br>
+            <li>1天内同个ip只允许最多连续申请3个UID</li>
+            <br>
+            <li>设置一个易记的密码并尽可能确保其安全性</li>
+            <br>
+            <li>保护好你的Utopia账户以防止不必要的财产损失</li>
+            <br>
+            <li>同一个UID只会发放一次，请务必妥善保管好您的账号</li>
+            <br>
+            <li>Utopia账号用于AI、Share、Chat与Donate，Blog不需要</li>
+            <br>
+            <li>以下是Utopia的<a href="terms.html" style="color: #90ee90;">服务条款</a>和<a href="privacy.html" style="color: #90ee90;">隐私政策</a>，注册成功则代表同意以上条约</li>
+            <br>
+            <li>选填的邮箱需要有效邮箱，若无效邮箱将不会保存到你的个人信息中并且当作未填写处理</li>
+            <br>
+            <li>注册账号后账号默认为你输入的手机号且注册时没有验证码机制，请谨慎填写以免后续找不回密码</li>
+            <br>
+            <li>所有收集的用户信息均只用于验证与保护账号</li>
+        </ol>
+            <br>
+            <p style="color: #add8e6;">若您在注册过程中遇到任何问题，请联系我们的客服QQ：3515624605</p>
+        </div>
+    </div>
+    <script src="../js/enroll.js"></script>
+</body>
+</html>
