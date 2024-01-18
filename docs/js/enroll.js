@@ -41,7 +41,7 @@ function enroll() {
     // Check if the entered phone number and password match one of the accounts
     if (accounts[phone] && password === accounts[phone]) {
         // Redirect to donate.html
-        window.location.href = 'donate.html';
+        window.location.href = 'html/donate.html';
     } else {
         // If the account does not exist or the password is wrong, show an alert
         alert('账号不存在');
